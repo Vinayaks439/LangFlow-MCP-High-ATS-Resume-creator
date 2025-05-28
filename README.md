@@ -82,7 +82,6 @@ flowchart TD
 - Any custom MCP-compatible chat client  
 
 📦 LangFlow Version: `v1.4+`  
-🧱 LLM Compatible: Claude, GPT-4, Mistral, or Phi-2 (in lightweight flows)
 
 ---
 
