@@ -1,4 +1,4 @@
-# 🧠 LangFlow MCP Resume Optimizer (ATS-Aware)
+# 🧠 LangFlow MCP High ATS Resume Creator (ATS-Aware)
 
 This repository contains a LangFlow-exported `.json` file representing a **custom multi-agent flow**, designed to act as an **MCP server**. This flow can be used with **Claude Desktop** or **any MCP-compatible client**.
 
