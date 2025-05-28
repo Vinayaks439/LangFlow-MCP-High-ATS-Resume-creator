@@ -65,7 +65,7 @@ By exposing this flow as an MCP server:
 ## 🧪 Example Use Case
 
 > **Prompt:**  
-> "Here's my resume. Please generate an optimized version for [LinkedIn Job URL] and tell me the ATS score."
+> "Please generate an tailored resume for [LinkedIn Job URL]"
 
 **Result:**  
 - Tailored resume (PDF, DOCX, TXT)  
