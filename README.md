@@ -52,26 +52,26 @@ By exposing this flow as an MCP server:
 ### 🔀 ADR 004 – Data Pipeline
 ```mermaid
 flowchart TD
-    F[📁 File Upload] --> A1[🤖 Agent 1: Resume Summary]
-    CI[💬 Chat Input (URL)] --> MCP[MCP URL Fetcher]
-    MCP --> A2[🤖 Agent 2: Job Summary]
-    A1 --> D1[🧮 Message → Data]
-    A2 --> D2[🧮 Message → Data]
-    D1 --> M[🔀 Merge]
-    D2 --> M
-    M --> P1[🔍 Parser]
-    P1 --> A3[🧠 Agent 3: Resume Generator]
-    A3 --> D3[🧮 Message → Data]
-    D3 --> P2[🔍 Parser]
-    P2 --> PDF[📄 LatexToPdf: Resume]
-    PDF --> OUT1[📤 Output: PDF/DOCX/TXT]
-    PDF --> D4[🧮 Message → Data]
-    A2 --> D5[🧮 Message → Data]
-    D4 --> M2[🔀 Merge for Score]
-    D5 --> M2
-    M2 --> P3[🔍 Parser]
-    P3 --> A4[📊 Agent 4: ATS Score]
-    A4 --> OUT2[📤 Output: Score]
+    FileUpload[File Upload] --> Agent1[Agent 1: Resume Summary]
+    ChatInput[Chat Input URL] --> MCP Custom component [URL HTML Fetcher]
+    MCP Custom component --> Agent2[Agent 2: Job Summary]
+    Agent1 --> MsgToData1[Message to Data 1]
+    Agent2 --> MsgToData2[Message to Data 2]
+    MsgToData1 --> Merge1[Merge Resume + Job Summary]
+    MsgToData2 --> Merge1
+    Merge1 --> Parse1[Parser for Resume]
+    Parse1 --> Agent3[Agent 3: Resume Generator in latex]
+    Agent3 --> MsgToData3[Message to Data 3]
+    MsgToData3 --> Parse2[Parser for LaTeX]
+    Parse2 --> LatexToPDF[Convert LaTeX to PDF/DOCX/TXT]
+    LatexToPDF --> ResumeOut[Output Resume]
+    LatexToPDF --> MsgToData4[Message to Data 4]
+    Agent2 --> MsgToData5[Message to Data 5]
+    MsgToData4 --> Merge2[Merge Resume + Job Summary for Scoring]
+    MsgToData5 --> Merge2
+    Merge2 --> Parse3[Parser for Score Input]
+    Parse3 --> Agent4[Agent 4: ATS Scoring]
+    Agent4 --> ScoreOut[Output Score]
 ```
 ---
 
