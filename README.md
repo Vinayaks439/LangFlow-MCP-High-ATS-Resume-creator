@@ -49,6 +49,30 @@ By exposing this flow as an MCP server:
 - **Output:** Final **ATS score (out of 100)** indicating how well the resume matches the job.
 - ✅ Helps users iterate on improvements.
 
+### 🔀 ADR 004 – Data Pipeline
+```mermaid
+flowchart TD
+    F[📁 File Upload] --> A1[🤖 Agent 1: Resume Summary]
+    CI[💬 Chat Input (URL)] --> MCP[MCP URL Fetcher]
+    MCP --> A2[🤖 Agent 2: Job Summary]
+    A1 --> D1[🧮 Message → Data]
+    A2 --> D2[🧮 Message → Data]
+    D1 --> M[🔀 Merge]
+    D2 --> M
+    M --> P1[🔍 Parser]
+    P1 --> A3[🧠 Agent 3: Resume Generator]
+    A3 --> D3[🧮 Message → Data]
+    D3 --> P2[🔍 Parser]
+    P2 --> PDF[📄 LatexToPdf: Resume]
+    PDF --> OUT1[📤 Output: PDF/DOCX/TXT]
+    PDF --> D4[🧮 Message → Data]
+    A2 --> D5[🧮 Message → Data]
+    D4 --> M2[🔀 Merge for Score]
+    D5 --> M2
+    M2 --> P3[🔍 Parser]
+    P3 --> A4[📊 Agent 4: ATS Score]
+    A4 --> OUT2[📤 Output: Score]
+```
 ---
 
 ## 🔗 Compatibility
