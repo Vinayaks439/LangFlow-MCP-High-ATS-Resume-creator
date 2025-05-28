@@ -53,8 +53,8 @@ By exposing this flow as an MCP server:
 ```mermaid
 flowchart TD
     FileUpload[File Upload] --> Agent1[Agent 1: Resume Summary]
-    ChatInput[Chat Input URL] --> MCP Custom component [URL HTML Fetcher]
-    MCP Custom component --> Agent2[Agent 2: Job Summary]
+    ChatInput[Chat Input URL] --> MCPCustomcomponent[URL HTML Fetcher]
+    MCPCustomcomponent --> Agent2[Agent 2: Job Summary]
     Agent1 --> MsgToData1[Message to Data 1]
     Agent2 --> MsgToData2[Message to Data 2]
     MsgToData1 --> Merge1[Merge Resume + Job Summary]
